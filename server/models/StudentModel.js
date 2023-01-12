@@ -13,7 +13,11 @@ const userSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    
+    type: {
+        type: String,
+        require: true,
+        default: 'student'
+    }
 },{timestamps:true}
 );
 

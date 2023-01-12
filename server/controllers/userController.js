@@ -19,6 +19,7 @@ const registerUser = asyncHandler(async(req,res)=>{
             isAdmin: user.isAdmin,
             isSeller: user.isSeller,
             token: generateToken(user._id),
+            type: user.type,
         })
     }else{
         res.status(404);
@@ -37,6 +38,7 @@ const authController = asyncHandler(async (req , res) => {
             isAdmin: user.isAdmin,
             isSeller: user.isSeller,
             token: generateToken(user._id),
+            type: user.type,
         })
     }else{
         res.status(401)
@@ -51,8 +53,6 @@ const getUserProfile = asyncHandler(async(req,res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin,
-            isSeller: user.isSeller,
         })
     }else{
         res.status(404)

@@ -17,6 +17,7 @@ const registerAdmin = asyncHandler(async(req,res)=>{
             name: admin.name,
             email: admin.email,
             token: generateToken(admin._id),
+            type: admin.type,
         })
     }else{
         res.status(404);
@@ -33,6 +34,7 @@ const authController = asyncHandler(async (req , res) => {
             name: admin.name,
             email: admin.email,
             token: generateToken(admin._id),
+            type: admin.type,
         })
     }else{
         res.status(401)
@@ -47,6 +49,7 @@ const getAdminProfile = asyncHandler(async(req,res) => {
             _id: admin._id,
             name: admin.name,
             email: admin.email,
+            type: admin.type,
         })
     }else{
         res.status(404)

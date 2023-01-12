@@ -17,6 +17,7 @@ const registerCompany = asyncHandler(async(req,res)=>{
             name: company.name,
             email: company.email,
             token: generateToken(company._id),
+            type: company.type,
         })
     }else{
         res.status(404);
@@ -33,6 +34,7 @@ const authController = asyncHandler(async (req , res) => {
             name: company.name,
             email: company.email,
             token: generateToken(company._id),
+            type: company.type,
         })
     }else{
         res.status(401)
@@ -47,6 +49,7 @@ const getCompanyProfile = asyncHandler(async(req,res) => {
             _id: company._id,
             name: company.name,
             email: company.email,
+            type: company.type,
         })
     }else{
         res.status(404)

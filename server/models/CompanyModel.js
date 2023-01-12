@@ -13,6 +13,11 @@ const companySchema = mongoose.Schema({
         type: String,
         require: true
     },
+    type: {
+        type: String,
+        require: true,
+        default: 'company'
+    }
     
 },{timestamps:true}
 );
