@@ -12,8 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import student from '../assests/students.gif'
+import student from '../assests/student.gif'
 import admin from '../assests/admin.gif'
+import company from '../assests/company.gif'
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
@@ -74,7 +75,7 @@ export default function RegisterPage() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: loginType === 'students' ? `url(${student})` : loginType === 'admin' ? `url(${admin})` :  ``,
+            backgroundImage: loginType === 'students' ? `url(${student})` : loginType === 'admin' ? `url(${admin})` :  `url(${company})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: "500px 500px",
             backgroundPosition: 'center',

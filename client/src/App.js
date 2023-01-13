@@ -4,23 +4,39 @@ import LoginPage from './pages/LoginScreen';
 import CategoryScreen from './pages/CategoryScreen';
 import StudentScreen from './pages/StudentScreen';
 import RegisterPage from './pages/RegisterScreen';
-import AdminScreen from './pages/AdminScreen';
+import AdminScreen from './pages/AdminSection/AdminScreen';
+import Dashboard from "./components/company components/dashboard"
+import { ThemeProvider } from '@emotion/react';
+import {ColorModeContext, useMode} from './theme.js'
+import { CssBaseline } from '@mui/material';
+import Sidebar from './components/company components/global/Sidebar';
+import { useState } from 'react';
 import CompanyScreen from './pages/CompanyScreen';
+import Contacts from './components/company components/contacts';
 
 function App() {
+  const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route exact path='/login' element={<LoginPage/>}/>
-          <Route exact path='/register' element={<RegisterPage/>}/>
-          <Route exact path='/' element={<CategoryScreen/>}/>
-          <Route exact path='/student' element={<StudentScreen/>}/>
-          <Route exact path='/admin' element={<AdminScreen/>}/>
-          <Route exact path='/company' element={<CompanyScreen/>}/>
-        </Routes>
-      </Router>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route exact path='/login' element={<LoginPage/>}/>
+            <Route exact path='/register' element={<RegisterPage/>}/>
+            <Route exact path='/' element={<CategoryScreen/>}/>
+            <Route exact path='/student' element={<StudentScreen/>}/>
+            <Route exact path='/admin' element={<AdminScreen/>}/>
+            <Route exact path='/company' element={<CompanyScreen/>}/>
+            <Route exact path='/company/history/' element={<CompanyScreen/>}/>
+            <Route exact path='/company/hr/' element={<CompanyScreen/>}/>
+          </Routes>
+        </Router>
+      </div>
+    </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
