@@ -10,6 +10,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
+import CalendarMonth from "@mui/icons-material/CalendarMonth";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -125,20 +126,14 @@ const Sidebar = ({type,type2}) => {
               selected={selected}
               setSelected={setSelected}
             /> : <></>}
-              
-            </Typography>
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >Data</Typography>
             <Item
-              title="History"
-              to={`/${type}/history`}
-              icon={<ContactsOutlinedIcon />}
+              title="Calendar"
+              to={`/admin/calendar`}
+              icon={<CalendarMonth />}
               selected={selected}
               setSelected={setSelected}
             />
+            </Typography>
             {/* <Item
               title="Edit"
               to="/edit"
@@ -154,27 +149,7 @@ const Sidebar = ({type,type2}) => {
               setSelected={setSelected}
             /> */}
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            {/* <Item
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-            <Item
-              title="hr table"
-              to="/company/hr"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            
             <Item
               title="FAQ Page"
               to="/faq"
