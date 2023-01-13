@@ -18,6 +18,34 @@ const HR = () => {
     const goBack = () => {
         setDetail(null)
     }
+
+    const rows = [ {
+        id: 1,
+        name: "Jon Snow",
+        email: "jonsnow@gmail.com",
+        age: 35,
+        phone: "(665)121-5454",
+        access: "admin",
+      },
+      {
+        id: 1,
+        name: "Jon Snow",
+        email: "jonsnow@gmail.com",
+        age: 35,
+        phone: "(665)121-5454",
+        access: "admin",
+      },
+      {
+        id: 1,
+        name: "Jon Snow",
+        email: "jonsnow@gmail.com",
+        age: 35,
+        phone: "(665)121-5454",
+        access: "admin",
+      },]
+      
+
+
     const columns = [
         { field: "id", headerName: "ID", flex: 0.5 },
         { field: "registrarId", headerName: "Registrar ID" },
@@ -124,7 +152,7 @@ const HR = () => {
                         }}
                     >
                         <DataGrid
-                            rows={""}
+                            rows={rows}
                             columns={columns}
                             components={{ Toolbar: GridToolbar }}
                             onRowClick={handleClick}

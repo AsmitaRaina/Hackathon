@@ -9,7 +9,7 @@ import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import EditIcon from "@mui/icons-material/Edit";
+import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({type,type2}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -53,11 +53,12 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "#6870fa !important",
         },
-
+        height:"700px",
+        zIndex: 0
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
+      <ProSidebar collapsed={isCollapsed} >
+        <Menu iconShape="square" >
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -75,7 +76,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  {type==="company" ? 'COMPANY HR' : 'TPO ADMIN'}
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -105,7 +106,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/company"
+              to={`/${type}`}
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -114,20 +115,26 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "0px 0 5px 0px" }}
             >
-              Data
-            </Typography>
-            {/* <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
+            
+            {type2 ? <Item
+              title={`${type2}`}
+              to={`/${type}/${type2}`}
+              icon={<CampaignOutlined />}
               selected={selected}
               setSelected={setSelected}
-            /> */}
+            /> : <></>}
+              
+            </Typography>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >Data</Typography>
             <Item
               title="History"
-              to="/company/history"
+              to={`/${type}/history`}
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
