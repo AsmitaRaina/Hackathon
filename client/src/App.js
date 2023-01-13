@@ -28,6 +28,7 @@ function App() {
             <Route exact path='/register' element={<RegisterPage/>}/>
             <Route exact path='/' element={<CategoryScreen/>}/>
             <Route exact path='/student' element={<StudentScreen/>}/>
+            <Route exact path='/student/annoucements' element={<StudentScreen/>}/>
             <Route exact path='/admin' element={<AdminScreen/>}/>
             <Route exact path='/company' element={<CompanyScreen/>}/>
             <Route exact path='/company/history/' element={<CompanyScreen/>}/>
