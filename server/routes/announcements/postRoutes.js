@@ -41,7 +41,7 @@ router.post("/create", async (req, res) => {
     title: req.body.title,
     tags: tags_array,
     description: req.body.description,
-    // author: req.user._id,
+    author: req.body.author,
     views: 1,
   });
   try {

@@ -13,6 +13,7 @@ import Sidebar from './components/company components/global/Sidebar';
 import { useState } from 'react';
 import CompanyScreen from './pages/CompanyScreen';
 import Contacts from './components/company components/contacts';
+import AnnouncementScreen from './pages/AdminSection/AnnouncementScreen';
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -29,8 +30,10 @@ function App() {
             <Route exact path='/' element={<CategoryScreen/>}/>
             <Route exact path='/student' element={<StudentScreen/>}/>
             <Route exact path='/student/annoucements' element={<StudentScreen/>}/>
-            <Route exact path='/admin' element={<AdminScreen/>}/>
+            <Route exact path='/admin/' element={<AdminScreen/>}/>
+            <Route exact path='/admin/announcements/' element={<AdminScreen/>}/>
             <Route exact path='/company' element={<CompanyScreen/>}/>
+            <Route exact path='/admin/history/' element={<AdminScreen/>}/>
             <Route exact path='/company/history/' element={<CompanyScreen/>}/>
             <Route exact path='/company/hr/' element={<CompanyScreen/>}/>
           </Routes>

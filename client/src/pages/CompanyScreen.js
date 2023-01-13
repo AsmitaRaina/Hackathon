@@ -10,12 +10,12 @@ const CompanyScreen = () => {
   return (
     <div className='flex'>
     <div >
-      <Sidebar  />
+      <Sidebar  type={`company`}   />
     </div>
     {
       path === '/company' ? 
       <div className="w-full">
-        <Dashboard/>
+        <></>
       </div> : 
       path === '/company/history' ?
       <div className="w-full">

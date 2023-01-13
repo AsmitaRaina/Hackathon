@@ -10,15 +10,6 @@ const postSchema = new mongoose.Schema({
     minlength: 10,
     maxlength: 80,
   },
-  tags: {
-    type: [tagSchema],
-    validate: {
-      validator: function (a) {
-        return a && a.length >= 0;
-      },
-    },
-    required: true,
-  },
   description: {
     type: String,
     required: true,
@@ -26,11 +17,21 @@ const postSchema = new mongoose.Schema({
     maxlength: 1024,
     required: true,
   },
-  // author: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
+  author: {
+    name:{
+      type: String,
+      required: true,
+    },
+    email:{
+      type: String,
+      required: true,
+    },
+    tag:{
+      type: String,
+      required: true,
+      default: 'all'
+    }
+  },
   views: {
     type: Number,
     default: 1,
@@ -47,8 +48,9 @@ const Post = mongoose.model("Post", postSchema);
 function validatePost(post) {
   const schema = Joi.object({
     title: Joi.string().required().min(10).max(80),
+    // tags: Joi.string().required().min(10).max(80),
     description: Joi.string().required().min(3).max(1024),
-    tags: Joi.array(),
+    author: Joi.allow(),
   });
   return schema.validate(post);
 }
