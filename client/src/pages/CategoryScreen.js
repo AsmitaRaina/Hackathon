@@ -43,7 +43,7 @@ const tiers = [
     title: 'Student',
     buttonText: 'Continue',
     buttonVariant: 'contained',
-    animation : "https://embed.lottiefiles.com/animation/73479",
+    animation : "https://embed.lottiefiles.com/animation/101546",
     type: 'students',
   },
   {

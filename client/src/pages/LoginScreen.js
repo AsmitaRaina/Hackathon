@@ -74,7 +74,7 @@ export default function LoginPage() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: loginType === 'student' ? `url(${student})` : loginType === 'admin' ? `url(${admin})` :  `url(${company})`,
+            backgroundImage: loginType === 'students' ? `url(${student})` : loginType === 'admin' ? `url(${admin})` :  `url(${company})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: "500px 500px",
             backgroundPosition: 'center',
