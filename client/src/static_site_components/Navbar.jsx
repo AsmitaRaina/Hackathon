@@ -38,6 +38,11 @@ const Navbar = () => {
           <li><Link className="cursor-pointer hover:text-blue-300" to="about" smooth={true} offset={-200} duration={500}>Why Recruit</Link></li>
           <li><Link className="cursor-pointer hover:text-blue-300" to="support" smooth={true} offset={-50} duration={500}>Director's Message</Link></li>
           <li><Link className="cursor-pointer hover:text-blue-300" to="platforms" smooth={true} offset={-100} duration={500}>Recruitment Process</Link></li>
+          <li><a className="cursor-pointer hover:text-blue-300" href="https://vjti.ac.in/wp-content/uploads/2021/09/200625_TAG5C___VJTI_TPO_Brochure_and_Courses_available_at_VJTI.pdf" 
+          smooth={true} offset={-100} duration={500}>Brochure</a></li>
+          <li><a className="cursor-pointer hover:text-blue-300" href="https://vjti.ac.in/wp-content/uploads/2022/10/B.Tech-Placement-report-2021-22.pdf" 
+          smooth={true} offset={-100} duration={500}>Placement Summary</a></li>
+      
           </ul>
         </div>
         <div className='hidden md:flex pr-4'>
