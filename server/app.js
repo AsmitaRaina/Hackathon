@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //Rouet imports
-const user = require("./routes/userRoutes");
+const user = require("./routes/studentRoutes");
 const company = require("./routes/companyRoutes");
 const admin = require("./routes/adminRoutes");
 //Routes

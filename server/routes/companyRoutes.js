@@ -29,7 +29,7 @@ router.get('/getcompany', async (req,res) => {
     res.send("Hello")
 })
 
-router.get('/initialhit', async (req,res) => {
+router.post('/initialhit', async (req,res) => {
 
         const company = req.body.companyName;
 
@@ -38,8 +38,7 @@ router.get('/initialhit', async (req,res) => {
             res.status(400)
             throw new Error('Company Does Not Exist!')
         }
-
-        const appliedStudents = companyExist[0].year[0].appliedStudents;
+        const appliedStudents = companyExist[0].year.appliedStudents;
 
         result = []
         for(var i=0;i<appliedStudents.length;i++){
