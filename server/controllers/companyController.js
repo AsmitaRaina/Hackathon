@@ -8,14 +8,27 @@ const Student = require('../models/StudentModel');
 
 
 const registerCompany = asyncHandler(async(req,res)=>{
-    const {name,email,password}= req.body
-    const companyExist = await Company.findOne({email})
+    const {name,hrName,hrEmail,password,jobDescription,branches,mincgpa,ctc,pptDate}= req.body
+    const companyExist = await Company.findOne({'name' : name})
+    //console.log(companyExist);
     if(companyExist){
         res.status(400)
         throw new Error('Company Already Exists!')
     }
 
-    const company = await Company.create({name,email,password})
+    const queryObject = {
+
+        'name' : name,
+        'hrProfile.name' : hrName,
+        'hrProfile.email' : hrEmail,
+        'hrProfile.password' : password,
+        'jobProfile.jobDescription' : jobDescription,
+        'jobProfile.branches' : branches,
+        'jobProfile.mincgpa' : mincgpa,
+        'jobProfile.ctc' : ctc,
+        'jobProfile.pptDate' : pptDate,
+    }
+    const company = await Company.create(queryObject)
     if(company){
         res.status(201).json({
             _id: company._id,
