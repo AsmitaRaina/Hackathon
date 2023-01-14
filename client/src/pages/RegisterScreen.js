@@ -141,10 +141,8 @@ export default function RegisterPage() {
                 Register
               </Button>
               <Grid container>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Already Have An Account ? Login"}
-                  </Link>
+              <Grid item>
+                    <Link to={`/login?=${loginType}`}>{"Already have an account? Login"}</Link>
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
