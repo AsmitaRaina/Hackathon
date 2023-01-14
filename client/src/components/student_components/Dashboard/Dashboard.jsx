@@ -5,7 +5,9 @@ const Dashboard = () => {
   const path = window.location.pathname;
   console.log(window.location.pathname);
   return (
-    <Detect/>
+    <div className='h-[900px]'>
+      <Detect/>
+    </div>
   )
 }
 

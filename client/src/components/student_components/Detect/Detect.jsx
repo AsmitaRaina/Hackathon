@@ -1,4 +1,7 @@
+import axios from "axios"
 import { useState, useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { getUserDetails } from "../../../actions/userActions"
 import './Detect.css'
 
 
@@ -8,6 +11,8 @@ const Detect = () => {
     const [loading, setLoading] = useState(true)
     const [detail, setDetail] = useState(false)
     const searchValue = useRef()
+    const userLogin = useSelector(state => state.userLogin)
+    const {Loading,error,userInfo} = userLogin
 
     const searchItem = () => {
         setSearch(searchValue.current.value)
@@ -18,19 +23,24 @@ const Detect = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
     }
+
+   const dispatch = useDispatch();
+    const applyHandler = (companyName, studentID) => {
+        console.log(companyName, studentID)
+        dispatch(getUserDetails(companyName, studentID));
+        
+    }
+
+
     const fetchMedicines = async () => {
         setLoading(true)
         try {
-            const res = await fetch(`/api/v1/medicines?search=${search}`)
+            const res = await fetch(`/api/v1/students/dashboard?search=${search}`)
             const data = await res.json()
             setLoading(false)
             const medicineData = data
             if (medicineData) {
-                const newData = medicineData.map((d) => {
-                    const { disease, medicines, symptoms, description } = d
-                    return { disease, medicines, symptoms, description }
-                })
-                setMedData(newData)
+                setMedData(medicineData)
             }
         } catch (err) {
             console.log(err)
@@ -51,38 +61,74 @@ const Detect = () => {
     }
     return <>
         {!detail ? <form onSubmit={handleSubmit} className="sign-form">
-            <input type="text" ref={searchValue} onChange={searchItem} />
+            <input type="text" ref={searchValue} onChange={searchItem} className="ml-10 w-2/3 h-10 text-black p-3"/>
             <button type='submit' className="input-submit">search</button>
         </form> : <></>}
-        <div>
-            {loading ? <div className="para"><h1>loading....</h1></div> : <></>}
-            {!detail ? <div className="grid-box">{
+        <div className="w-full">
+              
+                {/* {!detail ? <div className="grid-box">{
                 medData.map((d) => {
-                    const { disease, description } = d
-                    return <article key={disease}>
-                        <h1 className="med-h1">{disease}</h1>
-                        <p className="med-p">{description}</p>
-                        <button className="med-input" onClick={() => changeData(disease)}>Details</button>
-                    </article>
+                    console.log(d);
+                    return (
+                        
+                    <div className="mx-[50px]">
+                    <p className="bg-gray-100 text-black p-3">{d.name}</p>
+                    <hr/>
+                    </div>
+                        )
                 })
-            }</div> : <div className="center-div">{
-                medData.map((d) => {
-                    const { disease, description, medicines, symptoms } = d
-                    return <article key={disease} className="detail-box">
-                        <h1 className="med-h1">{disease}</h1>
-                        <p className="med-p">{description}</p>
-                        <h4 className="med-h4">Symptoms:-</h4>
-                        <h4 className="med-h4">{symptoms}</h4>
-                        <h4 className="med-h4">Medicines:-</h4>
-                        <ul>{
-                            medicines.map((m) => {
-                                return <li key={m} className="med-li">{m}</li>
-                            })
-                        }</ul>
-                        <button className="med-input" onClick={oldData}>All medicines</button>
-                    </article>
-                })
-            }</div>}
+            }</div> : <></>} */}
+
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Company Name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Job Description
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                CTC
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                MIN CPI
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                APPLY
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        medData.map((d) => {
+                            return (
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {d.name}
+                            </th>
+                            <td class="px-6 py-8">
+                                {d.jobProfile && d.jobProfile.jobDescription}
+                            </td>
+                            <td class="px-6 py-8">
+                            {d.jobProfile && d.jobProfile.ctc}
+                            </td>
+                            <td class="px-6 py-8">
+                            {d.jobProfile && d.jobProfile.mincgpa}
+                            </td>
+                            <td class="px-6 py-8">
+                                <button className="text-blue-800 underline" onClick={()=>alert(`You Successfully Applied To ${d.name}`)}>APPLY</button>
+                            </td>
+                        </tr>
+                                
+                                )
+                        })
+                    }
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </>
 

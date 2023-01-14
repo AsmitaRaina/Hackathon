@@ -57,14 +57,13 @@ export const register = (name, email, password, type) => async dispacth => {
     }
 }
 
-export const getUserDetails = (id) => async (dispacth, getState )=> {
+export const getUserDetails = (companyName, studentID) => async (dispacth, getState )=> {
     try {
         dispacth({
             type: USER_DETAILS_REQUEST,
         })
-        const {userLogin:{userInfo}} = getState();
-        const config = {headers: {'Content-Type' : 'application/json', Authorization:`Bearer ${userInfo.token}`}};
-        const {data} = await axios.get(`api/v1/users/profile`,config)
+        console.log(companyName, studentID);
+        const {data} = await axios.post(`api/v1/students/apply`, companyName,  `${studentID}`)
         
         dispacth({
             type: USER_DETAILS_SUCCESS,

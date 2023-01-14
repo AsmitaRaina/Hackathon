@@ -49,9 +49,9 @@ router.post('/apply', async (req,res) => {
     const studentID = req.body.studentID;
 
     const company = await Company.find({name:companyName})
-    const student = await Student.find({_id:studentID.toString()})
-
-
+    if(studentID && company){
+        const student = await Student.find({_id:studentID.toString()})
+        console.log(company)
     aS = company[0].year.appliedStudents
     if (aS.indexOf(studentID) < 0){
         company[0].year.appliedStudents.push(studentID)
@@ -71,6 +71,12 @@ router.post('/apply', async (req,res) => {
     await student[0].save()
 
     res.status(200).send('ok')
+    }
+    else{
+        res.status(500).send('nhi')
+    }
+
+    
 })
 
 module.exports = router;
