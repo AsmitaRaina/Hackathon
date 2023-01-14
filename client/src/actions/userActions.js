@@ -28,7 +28,10 @@ export const login = (email, password, type) => async (dispacth,getState) => {
 }
 
 export const logout = () => dispacth => {
-    dispacth({type: USER_LOGOUT})
+    dispacth({
+        type: USER_LOGOUT,
+        payload:{}
+    })
 }
 
 export const register = (name, email, password, type) => async dispacth => {

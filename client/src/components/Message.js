@@ -22,7 +22,7 @@ const Message = () => {
     
   return (
     <>
-    <div class="w-[81.5%] border border-red-500 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 fixed bottom-0 ">
+    <div class="w-[100%] border border-red-500 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 fixed bottom-0 ">
         <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
             <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600 ">
                 <div class="flex items-center space-x-1 sm:pr-4">

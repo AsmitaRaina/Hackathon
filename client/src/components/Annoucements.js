@@ -143,7 +143,7 @@ function Announcements({items}) {
                 </div>
             </td>
             <td class="px-6 py-4">
-                <p  type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-white hover:underline">{item.title}</p>
+                <p  type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-black hover:underline">{item.title}</p>
             </td>
         </tr>
                 )

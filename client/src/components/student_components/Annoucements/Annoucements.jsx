@@ -39,11 +39,13 @@ function Announcements({ items }) {
     const { Loading, error, products } = postsList
     console.log(products)
     const [desc, setDesc] = React.useState(null);
+    const [titl, setTitl] = React.useState(null);
     
     const dispatch = useDispatch();
-    const clickHandler = (description) => {
+    const clickHandler = (description, title) => {
         setShowDetails(!showDetails);
         setDesc(description);
+        setTitl(title)
         console.log(desc)
     }
 
@@ -128,7 +130,7 @@ function Announcements({ items }) {
                         {products && products.reverse().map((item) => {
                             return (
                                 <>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" onClick={() =>  clickHandler(item.description)}>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" onClick={() =>  clickHandler(item.description, item.title)}>
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -151,17 +153,17 @@ function Announcements({ items }) {
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium  text-white hover:underline">{item.title}</p>
+                                        <p type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium  text-black hover:underline">{item.title}</p>
                                     </td>
                                 </tr>
                                 {showDetails &&
                                 <>
                                     <div className="overflow-scroll" >
-                                        <div className='fixed top-[57px] right-20 z-10 w-2/3 h-[90%] rounded-xl bg-[#141b2d]'>
-                                            <MessageComponent content={desc}/>
+                                        <div className='fixed top-[57px] right-0 z-10 w-[80%] h-[90%] rounded-xl bg-[#141b2d]'>
+                                            <MessageComponent content={desc} title={titl}/>
                                         </div>
                                     </div>
-                                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 fixed top-[65px] right-[6%] z-50" onClick={() => setShowDetails(!showDetails)}>
+                                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 fixed top-[80px] right-[20px] z-50" onClick={() => setShowDetails(!showDetails)}>
                                         x
                                     </button>
                                 </>     

@@ -31,8 +31,7 @@ const authController = asyncHandler(async (req , res) => {
     const {email , password} = req.body;
     const user = await User.findOne({'personal.email' : email})
     if(user && (await user.matchPassword(password))){
-        console.log(user);
-        console.log(user.name,user.email,user.isAdmin,user.isSeller)
+        
         res.json({
             _id : user._id,
             name: user.personal.name,

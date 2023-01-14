@@ -13,11 +13,13 @@ import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import psychology from "@mui/icons-material/Psychology"
 import Psychology from "@mui/icons-material/Psychology";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../actions/userActions.js";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   return (
     <MenuItem
       active={selected === title}
@@ -40,6 +42,10 @@ const Sidebar = ({type,type2}) => {
   const [selected, setSelected] = useState("Dashboard");
   const userLogin = useSelector(state => state.userLogin)
   const {Loading,error,userInfo} = userLogin
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
 
   return (
     <Box

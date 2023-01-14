@@ -53,13 +53,13 @@ export default function LoginPage() {
     const navigate = useNavigate();
 
     React.useEffect(() => {
-        if(userInfo && userInfo.type === "student" && loginType=== "students"){
+        if(userInfo && userInfo.branch !== null && loginType=== "students"){
             navigate('/student')
         }
         else if(userInfo && userInfo.type === "admin" && loginType=== "admin" ){
             navigate('/admin')
         }
-        else if(userInfo && userInfo.type === "company" && loginType=== "company"){
+        else if(userInfo && userInfo.hrName !== null && loginType=== "company"){
             navigate('/company')
         }
     },[userInfo])
