@@ -1,6 +1,11 @@
 const Company = require('../models/CompanyModel');
 const asyncHandler = require('express-async-handler');
 const generateToken = require('../utils/generateToken')
+const Student = require('../models/StudentModel');
+
+
+
+
 
 const registerCompany = asyncHandler(async(req,res)=>{
     const {name,email,password}= req.body
@@ -27,14 +32,15 @@ const registerCompany = asyncHandler(async(req,res)=>{
 
 const authController = asyncHandler(async (req , res) => {
     const {email , password} = req.body;
-    const company = await Company.findOne({email})
+    const company = await Company.findOne({'hrProfile.email' : email})
     if(company && (await company.matchPassword(password))){
         res.json({
             _id : company._id,
             name: company.name,
-            email: company.email,
+            hrName : company.hrProfile.name,
+            email: company.hrProfile.email,
             token: generateToken(company._id),
-            type: company.type,
+           // students : JSON.stringify(handleRelation(company.year[0].selectedStudents))
         })
     }else{
         res.status(401)

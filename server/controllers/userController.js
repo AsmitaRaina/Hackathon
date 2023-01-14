@@ -4,7 +4,7 @@ const generateToken = require('../utils/generateToken')
 
 const registerUser = asyncHandler(async(req,res)=>{
     const {name,email,password}= req.body
-    const userExist = await User.findOne({email})
+    const userExist = await User.findOne({'personal.email' : email})
     if(userExist){
         res.status(400)
         throw new Error('User Already Exists!')
@@ -29,16 +29,22 @@ const registerUser = asyncHandler(async(req,res)=>{
 
 const authController = asyncHandler(async (req , res) => {
     const {email , password} = req.body;
-    const user = await User.findOne({email})
+    const user = await User.findOne({'personal.email' : email})
     if(user && (await user.matchPassword(password))){
+        console.log(user);
+        console.log(user.name,user.email,user.isAdmin,user.isSeller)
         res.json({
             _id : user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            isSeller: user.isSeller,
+            name: user.personal.name,
+            email: user.personal.email,
+            gender : user.personal.gender,
+            dob : user.personal.dob,
+            contact: user.personal.contact,
+            batch: user.personal.batch,
+            branch: user.personal.branch,
+            
             token: generateToken(user._id),
-            type: user.type,
+
         })
     }else{
         res.status(401)
