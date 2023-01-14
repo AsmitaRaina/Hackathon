@@ -9,10 +9,7 @@ import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
-import CalendarMonth from "@mui/icons-material/CalendarMonth";
-import psychology from "@mui/icons-material/Psychology"
-import Psychology from "@mui/icons-material/Psychology";
+import EditIcon from "@mui/icons-material/Edit";
 import { useSelector } from "react-redux";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -33,13 +30,13 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebar = ({type,type2}) => {
+const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const userLogin = useSelector(state => state.userLogin)
-  const {Loading,error,userInfo} = userLogin
+  const {Loading,error,userInfo} = userLogin;
 
   return (
     <Box
@@ -59,12 +56,11 @@ const Sidebar = ({type,type2}) => {
         "& .pro-menu-item.active": {
           color: "#6870fa !important",
         },
-        height:"700px",
-        zIndex: 0
+
       }}
     >
-      <ProSidebar collapsed={isCollapsed} >
-        <Menu iconShape="square" >
+      <ProSidebar collapsed={isCollapsed}>
+        <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -82,7 +78,7 @@ const Sidebar = ({type,type2}) => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  {type==="company" ? 'COMPANY HR' : 'TPO ADMIN'}
+                  Student Section
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -103,7 +99,7 @@ const Sidebar = ({type,type2}) => {
                   {userInfo.name}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  {userInfo.type}
+                  {userInfo.email}
                 </Typography>
               </Box>
             </Box>
@@ -112,41 +108,33 @@ const Sidebar = ({type,type2}) => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to={`/${type}`}
+              to="/student"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
 
-            <Typography
+            {/* <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "0px 0 5px 0px" }}
+              sx={{ m: "15px 0 5px 20px" }}
             >
-            
-            {type2 ? <Item
-              title={`${type2}`}
-              to={`/${type}/${type2}`}
-              icon={<CampaignOutlined />}
+              Data
+            </Typography> */}
+            {/* <Item
+              title="Manage Team"
+              to="/team"
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            /> : <></>}
+            /> */}
             <Item
-              title="Calendar"
-              to={`/${type}/calendar`}
-              icon={<CalendarMonth />}
+              title="Annoucements"
+              to="/student/annoucements"
+              icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            {type === "company" && <Item
-              title="HR Table"
-              to={`/${type}/hr`}
-              icon={<Psychology />}
-              selected={selected}
-              setSelected={setSelected}
-            />}
-            </Typography>
-            
             {/* <Item
               title="Edit"
               to="/edit"
@@ -162,14 +150,34 @@ const Sidebar = ({type,type2}) => {
               setSelected={setSelected}
             /> */}
 
-            
+            {/* <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Pages
+            </Typography> */}
+            {/* <Item
+              title="Profile Form"
+              to="/form"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            /> */}
+            {/* <Item
+              title="hr table"
+              to="/company/hr"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Item
               title="FAQ Page"
               to="/faq"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
           </Box>
         </Menu>
       </ProSidebar>
