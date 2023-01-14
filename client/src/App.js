@@ -15,6 +15,7 @@ import CompanyScreen from './pages/CompanyScreen';
 import Contacts from './components/company components/contacts';
 import AnnouncementScreen from './pages/AdminSection/AnnouncementScreen';
 import TemporaryDrawer from './components/Drawer';
+import StaticSite from './pages/StaticSite';
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -28,7 +29,8 @@ function App() {
           <Routes>
             <Route exact path='/login' element={<LoginPage/>}/>
             <Route exact path='/register' element={<RegisterPage/>}/>
-            <Route exact path='/' element={<CategoryScreen/>}/>
+            <Route exact path='/category' element={<CategoryScreen/>}/>
+            <Route exact path="/" element={<StaticSite/>}/>
             <Route exact path='/student' element={<StudentScreen/>}/>
             <Route exact path='/student/annoucements' element={<StudentScreen/>}/>
             <Route exact path='/admin/' element={<AdminScreen/>}/>

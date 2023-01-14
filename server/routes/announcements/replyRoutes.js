@@ -1,7 +1,7 @@
 const express = require("express");
 const _ = require("lodash");
 const { Reply, validateReply } = require("../../models/ReplyModel");
-const { Post } = require("../../models/PostModel");
+const { Post } = require("../../models/postModel");
 const router = express.Router();
 
 router.post("/create/:id", async (req, res) => {
