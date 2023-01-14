@@ -44,6 +44,8 @@ A one stop webapp considering of the following major features :
 
 ```cd .. && cd /client```
 
+```cd client```
+
 `npm i`
 
 `npm start`
