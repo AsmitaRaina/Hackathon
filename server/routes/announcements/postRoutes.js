@@ -1,7 +1,7 @@
 const express = require("express");
 const _ = require("lodash");
 const { protect } = require("../../middleware/authMiddleware");
-const { Post, validatePost } = require("../../models/PostModel");
+const { Post, validatePost } = require("../../models/postModel");
 const { Reply, validateReply } = require("../../models/ReplyModel");
 const { User } = require("../../models/UserModel");
 const { Tag } = require("../../models/TagModel");
