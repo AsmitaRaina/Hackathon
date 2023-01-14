@@ -33,10 +33,10 @@ function App() {
             <Route exact path='/admin/' element={<AdminScreen/>}/>
             <Route exact path='/admin/announcements/' element={<AdminScreen/>}/>
             <Route exact path='/admin/calendar/' element={<AdminScreen/>}/>
-            <Route exact path='/company' element={<CompanyScreen/>}/>
             <Route exact path='/admin/history/' element={<AdminScreen/>}/>
-            <Route exact path='/company/history/' element={<CompanyScreen/>}/>
-            <Route exact path='/company/hr/' element={<CompanyScreen/>}/>
+            <Route exact path='/company' element={<CompanyScreen/>}/>
+            <Route exact path='/company/calendar' element={<CompanyScreen/>}/>
+            <Route exact path='/company/hr' element={<CompanyScreen/>}/>
           </Routes>
         </Router>
       </div>

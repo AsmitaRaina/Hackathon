@@ -11,6 +11,8 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
+import psychology from "@mui/icons-material/Psychology"
+import Psychology from "@mui/icons-material/Psychology";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -128,12 +130,20 @@ const Sidebar = ({type,type2}) => {
             /> : <></>}
             <Item
               title="Calendar"
-              to={`/admin/calendar`}
+              to={`/${type}/calendar`}
               icon={<CalendarMonth />}
               selected={selected}
               setSelected={setSelected}
             />
+            {type === "company" && <Item
+              title="HR Table"
+              to={`/${type}/hr`}
+              icon={<Psychology />}
+              selected={selected}
+              setSelected={setSelected}
+            />}
             </Typography>
+            
             {/* <Item
               title="Edit"
               to="/edit"

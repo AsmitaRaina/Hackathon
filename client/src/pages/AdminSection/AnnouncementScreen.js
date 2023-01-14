@@ -22,8 +22,8 @@ const AnnouncementScreen = () => {
       }
       { showMessage &&  <Message/>}
       {
-        showMessage && <button type="submit" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 fixed bottom-4 left-6 z-10" onClick={() => setShowMessage(!showMessage)}>
-        X
+        showMessage && <button type="submit" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-red-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 fixed bottom-16 right-6 z-10" onClick={() => setShowMessage(!showMessage)}>
+        Discard
       </button>
       }
     </>
