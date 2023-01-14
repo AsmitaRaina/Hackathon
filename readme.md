@@ -42,7 +42,7 @@ A one stop webapp considering of the following major features :
 
 #### Start the Client : 
 
-```cd .. && cd /client```
+```cd ..```
 
 ```cd client```
 
