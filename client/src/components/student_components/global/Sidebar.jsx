@@ -9,8 +9,10 @@ import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import Logout from "@mui/icons-material/LogoutOutlined"
 import EditIcon from "@mui/icons-material/Edit";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../actions/userActions.js";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -37,6 +39,7 @@ const Sidebar = () => {
   const [selected, setSelected] = useState("Dashboard");
   const userLogin = useSelector(state => state.userLogin)
   const {Loading,error,userInfo} = userLogin;
+  const dispatch = useDispatch();
 
   return (
     <Box
@@ -178,6 +181,15 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             /> */}
+            <div onClick={() => dispatch(logout())}>
+                <Item
+                  title="Logout"
+                  to={`/category`}
+                  icon={<Logout />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+              </div>
           </Box>
         </Menu>
       </ProSidebar>

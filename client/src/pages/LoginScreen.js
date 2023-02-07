@@ -57,7 +57,7 @@ export default function LoginPage() {
             navigate('/student')
         }
         else if(userInfo && userInfo.type === "admin" && loginType=== "admin" ){
-            navigate('/admin')
+            navigate('/admin/announcements')
         }
         else if(userInfo && userInfo.hrName !== null && loginType=== "company"){
             navigate('/company')

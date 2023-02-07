@@ -58,7 +58,7 @@ export default function RegisterPage() {
             navigate('/student')
         }
         else if(userInfo && userInfo.type === "admin" && loginType=== "admin" ){
-            navigate('/admin')
+            navigate('/admin/announcements')
         }
         else if(userInfo && userInfo.type === "company" && loginType=== "company"){
             navigate('/company')
